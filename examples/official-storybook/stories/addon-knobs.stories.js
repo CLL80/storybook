@@ -51,6 +51,7 @@ storiesOf('Addons|Knobs.withKnobs', module)
   .addDecorator(withKnobs)
   .add('tweaks static values', () => {
     const name = text('Name', 'Storyteller');
+    const shouldBeNullByDefault = boolean('Should Be Null By Default', null);
     const age = number('Age', 70, { range: true, min: 0, max: 90, step: 5 });
     const fruits = {
       apple: 'Apple',
@@ -86,9 +87,9 @@ storiesOf('Addons|Knobs.withKnobs', module)
     const style = { backgroundColor, ...otherStyles };
     const salutation = nice ? 'Nice to meet you!' : 'Leave me alone!';
     const dateOptions = { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' };
-
     return (
       <div style={style}>
+        <h3>Should be `null` by default: {`${shouldBeNullByDefault}`}</h3>
         <p>{intro}</p>
         <p>My birthday is: {new Date(birthday).toLocaleDateString('en-US', dateOptions)}</p>
         <p>I live in NY for {years} years.</p>
